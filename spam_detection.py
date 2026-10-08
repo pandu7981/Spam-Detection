@@ -1,9 +1,13 @@
 # Step 1: Import libraries
 import pandas as pd
 
+import os
+
 # Step 2: Load the dataset
-# Replace 'spam.csv' with the path to your downloaded file
-df = pd.read_csv(r"C:\Users\madak\Desktop\python_libraries\scikitlearn\scikit_code\z_spamdetection\spam.csv", encoding='latin-1')
+# Look for spam.csv in the same directory as this script, or fallback to the original path
+base_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_dir, 'spam.csv') if os.path.exists(os.path.join(base_dir, 'spam.csv')) else r"C:\Users\madak\Desktop\python_libraries\scikitlearn\scikit_code\z_spamdetection\spam.csv"
+df = pd.read_csv(csv_path, encoding='latin-1')
 
 # Step 3: Inspect the dataset
 print(df.head())
